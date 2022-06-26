@@ -1,0 +1,41 @@
+@use './mixins';
+@use './variables' as var;
+
+%btn {
+  padding: 0.7rem 1.8rem;
+  width: fit-content;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  &:hover {
+    cursor: pointer;
+    filter: brightness(125%);
+    transition: all 0.2s;
+  }
+  &:disabled {
+    @include mixins.set-background(var.$light-color);
+    color: gray;
+    &:hover {
+      filter: brightness(100%);
+      cursor: default;
+    }
+  }
+}
+
+.btnDark {
+  @extend %btn;
+  @include mixins.set-background(var.$dark-color);
+}
+
+.btnFancySecondary {
+  @extend %btn;
+  background: linear-gradient(135deg, var.$cosecondary-color, var.$secondary-color);
+  color: white;
+}
+
+.btnFancyPrimary {
+  @extend %btn;
+  background: linear-gradient(135deg, var.$coprimary-color, var.$primary-color);
+  color: white;
+}

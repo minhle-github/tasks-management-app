@@ -1,0 +1,98 @@
+@use '../../../styles/variables' as var;
+@use '../../../styles/mixins';
+@use '../../../styles/mobile' as media;
+
+.form {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(120deg, var.$primary-color, var.$coprimary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .formMain {
+    background-color: white;
+    min-width: 400px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .formHeader {
+      text-align: center;
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 1px solid silver;
+    }
+
+    .formBody {
+      width: 100%;
+      padding: 0 3rem;
+      .txtField {
+        position: relative;
+        border-bottom: 2px solid #adadad;
+        margin: 2rem 0;
+
+        input {
+          width: 100%;
+          padding: 0 0.5rem;
+          height: 2rem;
+          border: none;
+          background: none;
+          outline: none;
+
+          &:focus ~ label,
+          &:valid ~ label {
+            top: -0.5rem;
+            color: var.$primary-color;
+          }
+
+          &:focus ~ span::before,
+          &:valid ~ span::before {
+            width: 100%;
+          }
+        }
+
+        label {
+          position: absolute;
+          top: 50%;
+          left: 0.5rem;
+          color: #adadad;
+          transform: translateY(-50%);
+          pointer-events: none;
+          transition: .5s;
+        }
+
+        span::before {
+          content: '';
+          position: absolute;
+          top: 2rem;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: var.$primary-color;
+          transition: .5s;
+        }
+      }
+      .formBtn {
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+      .loginLink {
+        margin-bottom: 1rem;
+        a {
+          text-decoration: none;
+          color: var.$primary-color;
+          &:hover {
+            text-decoration: underline;
+            filter: brightness(90%);
+          }
+        }
+      }
+    }
+  }
+}
